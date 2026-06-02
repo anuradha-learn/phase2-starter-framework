@@ -21,30 +21,29 @@ const billingAddress = {
 // ============================================================
 // Shared Login Hook
 // ============================================================
-
 test.beforeEach(async ({ page }) => {
 
-  // Navigate to application
-  await page.goto(loginData.baseUrl);
+    // Navigate to application
+    await page.goto(loginData.baseUrl);
 
-  // Login using registered user credentials
-  await page.getByRole('textbox', {
-    name: 'Username or email address'
-  }).fill(loginData.user);
+    // Login using registered user credentials
+    await page.getByRole('textbox', {
+        name: 'Username or email address'
+    }).fill(loginData.user);
 
-  await page.getByRole('textbox', {
-    name: 'Password Required'
-  }).fill(loginData.password);
+    await page.getByRole('textbox', {
+        name: 'Password Required'
+    }).fill(loginData.password);
 
-  await page.getByRole('button', {
-    name: 'Log in'
-  }).click();
+    await page.getByRole('button', {
+        name: 'Log in'
+    }).click();
 
-  // Verify login succeeded
-  await expect(
-    page.getByLabel('Account pages')
-      .getByRole('link', { name: 'Log out' })
-  ).toBeVisible();
+    // Verify login succeeded
+    await expect(
+        page.getByLabel('Account pages')
+            .getByRole('link', { name: 'Log out' })
+    ).toBeVisible();
 });
 
 // ============================================================
